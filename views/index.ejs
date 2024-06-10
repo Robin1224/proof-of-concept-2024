@@ -1,0 +1,13 @@
+<%- include('partials/meta/head', {page: "index"}) %>
+
+<form method="POST" action="/brew">
+  <% data.ingredients.forEach(ingredient => { %>
+    <label>
+      <input type="checkbox" name="ingredients" value="<%= ingredient.id %>" />
+      <%= ingredient.id %> <%= ingredient.name %>
+    </label>
+  <% }) %>
+
+  <button type="submit">Brew Potion</button>
+</form>
+<%- include('partials/meta/foot') %>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Minimum-scale moest ik toevoegen vanwege een bug in Chrome -->
+    <!-- Meer info: -->
+    <!-- https://stackoverflow.com/questions/62044935/div-height-and-width-inconsistent-to-screen-dimensions-in-devtools-in-chrome -->
+
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0"
+    />
+    <link rel="stylesheet" href="/styles/style.css" />
+    <!-- Load correct stylesheet -->
+    <% if (page === 'index') { %>
+      <link rel="stylesheet" href="/styles/index.css" />
+    <% } else if (page === 'result') { %>
+      <link rel="stylesheet" href="/styles/result.css" />
+    <% } %>
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=MedievalSharp&display=swap"
+      rel="stylesheet"
+    />
+    <title>Merlin's Potions</title>
+  </head>
+  <body>

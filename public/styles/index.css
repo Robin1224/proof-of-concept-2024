@@ -1,0 +1,11 @@
+/* ----------------------------------- */
+/* -------------- Index -------------- */
+/* ----------------------------------- */
+
+body {
+  display: grid;
+  grid-template-columns: 2fr 3fr 2fr;
+  grid-template-rows: 1fr 12rem;
+  height: 100vh;
+  width: 100%;
+}
