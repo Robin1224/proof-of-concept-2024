@@ -3,12 +3,7 @@
 /* ----------------------------------- */
 
 body {
-  display: grid;
-  grid-template-columns: 3fr 3fr 2fr;
-  grid-template-rows: 1fr 8rem;
-  grid-template-areas:
-    "a b c"
-    "d d d";
+  display: flex;
   height: 100vh;
   background-image: url("/assets/background.png");
   background-repeat: no-repeat;
@@ -24,17 +19,15 @@ form {
 }
 
 .book {
-  grid-area: a;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 255, 0, 0.4);
+  /* background-color: rgba(0, 255, 0, 0.2); */
 }
 
 .cauldron {
-  grid-area: b;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 0, 0, 0.4);
+  /* background-color: rgba(255, 0, 0, 0.2); */
 }
 
 /* ----------------------------------- */
@@ -65,9 +58,35 @@ form {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   background-color: rgba(255, 255, 255, 0.2);
+  transition: background-color 0.1s;
+}
+
+button {
+  text-decoration: none;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #f0f0f0;
+}
+
+.ingredients-list label:hover {
+  background-color: rgba(255, 255, 255, 0.3);
 }
 
 .ingredients-list img {
   height: 6rem;
   width: 6rem;
+  transition: filter 0.1s;
+}
+
+.ingredients-list input[type="checkbox"]:checked + img {
+  filter: grayscale(100%);
+  -webkit-backdrop-filter: grayscale(100%);
+}
+
+.ingredients-active {
+  border: 2px solid #000;
+  position: absolute;
+  right: 2rem;
+  bottom: 12rem;
 }

@@ -1,8 +1,10 @@
 <%- include('partials/meta/head', {page: "result"}) %>
 
-<h1>You brewed:</h1>
-<h2><%= data.name %></h2>
-<img src="<%= data.asset %>" alt="<%= data.name %>" />
-<a href="/">Go back</a>
+<main>
+  <h2>You brewed:</h2>
+  <h1><%= data.name %></h1>
+  <img src="<%= data.asset %>" alt="<%= data.name %>" />
+  <a href="/">Go back</a>
+</main>
 
 <%- include('partials/meta/foot') %>

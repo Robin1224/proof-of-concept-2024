@@ -5,14 +5,14 @@
 <div class="cauldron"></div>
 
 <form method="POST" action="/brew">
-  <div class="ingredients-active"></div>
+  <div class="ingredients-active">
+    <button type="submit">Brew Potion</button>
+  </div>
 
   <div class="ingredients-list">
     <% data.ingredients.forEach(ingredient => { %>
     <%- include('partials/ingredientCard', {ingredient: ingredient}) %>
     <% }) %>
   </div>
-
-  <button type="submit">Brew Potion</button>
 </form>
 <%- include('partials/meta/foot') %>
