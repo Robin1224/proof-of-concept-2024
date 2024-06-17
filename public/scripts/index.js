@@ -9,9 +9,10 @@ document
         document.querySelector(`.active-grid label[for="${this.id}"]`).classList.add("display-none")
       }
       
+
       if (
         el.closest(".ingredients-list").querySelectorAll("input:checked")
-          .length == 4
+          .length == 6
       ) {
         el.closest(".ingredients-list")
           .querySelectorAll("input:not(:checked)")
