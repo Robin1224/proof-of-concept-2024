@@ -2,32 +2,55 @@
 /* -------------- Index -------------- */
 /* ----------------------------------- */
 
+:root {
+  --ingredient-size: 8rem;
+  --ingredient-image: 6rem;
+  --ingredient-margin: 1rem;
+
+  --color-selected: rgba(78, 206, 187, 0.4);
+  
+  --color-disabled-gradient-inner: rgba(206, 78, 78, 0);
+  --color-disabled-gradient-outer: rgba(206, 78, 78, 0.4);
+}
+
 body {
-  display: flex;
-  height: 100vh;
   background-image: url("/assets/background.png");
   background-repeat: no-repeat;
   background-size: cover;
-}
-
-form {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
   height: 100vh;
 }
 
+form {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+}
+
 .book {
-  width: 100%;
-  height: 100%;
-  /* background-color: rgba(0, 255, 0, 0.2); */
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  width: 30rem;
+  height: calc(100% - 11rem);
+  background-color: rgba(0, 255, 0, 0.2);
+  z-index: 1;
 }
 
 .cauldron {
-  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  right: 0;
+  height: 100vh;
+}
+
+.cauldron svg {
   height: 100%;
-  /* background-color: rgba(255, 0, 0, 0.2); */
+  width: 100%;
+  color: #545353;
 }
 
 /* ----------------------------------- */
@@ -35,7 +58,6 @@ form {
 /* ----------------------------------- */
 
 .ingredients-list {
-  grid-area: d;
   display: flex;
   gap: 1rem;
   justify-items: center;
@@ -45,48 +67,118 @@ form {
   bottom: 0;
   left: 0;
   width: 100vw;
+  padding: 1rem;
 }
 
-.ingredients-list label {
+.ingredient {
   border-radius: 0.5rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   background-color: rgba(255, 255, 255, 0.2);
-  transition: background-color 0.1s;
+  transition: background-color 0.1s, box-shadow 0.3s;
 }
 
-button {
-  text-decoration: none;
-  font-size: 1.5rem;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  background-color: #f0f0f0;
-}
-
-.ingredients-list label:hover {
+.ingredient:hover {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-.ingredients-list img {
-  height: 6rem;
-  width: 6rem;
+.ingredient:focus-within {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-focus-ring);
+}
+
+.ingredient:has(input:checked) {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-selected);
+}
+
+.ingredient:focus-within::after {
+  content:"";
+  height: var(--ingredient-size);
+  width: var(--ingredient-size);
+  border-radius: 0.5rem;
+  position: absolute;
+  background: rgb(206, 78, 130);
+  background: radial-gradient(
+    circle,
+    var(--color-focus-gradient-inner) 40%,
+    var(--color-focus-gradient-outer) 100%
+  );
+}
+
+.ingredient:has(input:disabled)::after {
+  content:"";
+  height: var(--ingredient-size);
+  width: var(--ingredient-size);
+  border-radius: 0.5rem;
+  position: absolute;
+  background: rgb(206, 78, 130);
+  background: radial-gradient(
+    circle,
+    var(--color-disabled-gradient-inner) 40%,
+    var(--color-disabled-gradient-outer) 100%
+  );
+}
+
+.ingredient img {
+  height: var(--ingredient-image);
+  width: var(--ingredient-image);
   transition: filter 0.1s;
 }
 
-.ingredients-list input[type="checkbox"]:checked + img {
+.ingredient input[type="checkbox"]:checked + img {
   filter: grayscale(100%);
   -webkit-backdrop-filter: grayscale(100%);
 }
 
+button {
+  font-family: "MedievalSharp", cursive;
+  font-size: 1.5rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  background-color: #f0f0f0;
+  position: static;
+  height: 3rem;
+  width: calc(100% - 2rem);
+  margin: 0 1rem 0 1rem;
+} 
+
 .ingredients-active {
-  border: 2px solid #000;
   position: absolute;
-  right: 2rem;
-  bottom: 12rem;
+  right: 20rem;
+  bottom: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  /* gap: 1rem; */
+}
+
+.active-grid {
+  position: relative;
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  /* background-color: rgba(255, 255, 255, 0.2); */
+  height: calc((var(--ingredient-size) * 2) + (var(--ingredient-margin) * 3));
+  width: calc((var(--ingredient-size) * 2) + (var(--ingredient-margin) * 3));
+  overflow: hidden;
+}
+
+.empty-slot {
+  height: var(--ingredient-size);
+  width: var(--ingredient-size);
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (min-width: 880px) {
+  .book {
+    display: block;
+  }
 }

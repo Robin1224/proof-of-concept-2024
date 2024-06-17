@@ -1,18 +1,46 @@
 <%- include('partials/meta/head', {page: "index"}) %>
 
-<div class="book"></div>
-
-<div class="cauldron"></div>
-
 <form method="POST" action="/brew">
-  <div class="ingredients-active">
-    <button type="submit">Brew Potion</button>
+  <div class="book"></div>
+
+  <div class="cauldron">
+    <svg
+      width="1063"
+      height="831"
+      viewBox="0 0 1063 831"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M587.282 87.5879C300.804 51.6524 202.67 100.313 189.413 129.135C178.749 141.094 199.047 169.687 210.529 182.489C182.816 176.416 126.211 179.729 121.498 241.563C116.785 303.397 170.274 319.403 197.608 319.677C31.5044 543.494 119.219 722.38 183.84 783.846L123.234 854.358C117.545 908.834 158.358 902.188 179.476 892.055L236.427 832.791C478.063 996.344 684.642 950.3 757.727 906.835L786.63 981.851C835.481 1019.92 851.751 982.416 853.78 958.905L822.326 869.954C1050.2 688.482 977.261 482.21 912.306 401.759C971.17 409.486 988.874 375.145 990.368 357.009C990.315 288.881 942.282 262.62 918.272 258.006C928.001 250.913 934.273 236.931 936.193 230.827C863.465 124.234 673.282 90.9204 587.282 87.5879Z"
+        fill="#353535"
+        stroke="#4A4A4A"
+        stroke-width="0.918484"
+      />
+      <path
+        d="M793.589 172.594C757.994 152.607 627.05 127.143 566.028 116.91C528.993 104.414 423.955 104.793 376.066 106.544C288.059 110.544 268.055 134.833 269.053 146.477C346.519 209.764 515.78 238.459 590.727 244.896C665.139 250.233 820.444 258.271 846.373 247.718C872.302 237.166 862.437 215.95 854.263 206.661L793.589 172.594Z"
+        fill="currentColor"
+      />
+    </svg>
+    <div class="ingredients-active">
+      <div class="active-grid">
+        <% data.ingredients.forEach(ingredient => { %> <%-
+        include('partials/activeIngredientCard', {ingredient: ingredient}) %> <%
+        }) %>
+        <div class="empty-slot"></div>
+        <div class="empty-slot"></div>
+        <div class="empty-slot"></div>
+        <div class="empty-slot"></div>
+      </div>
+      <button type="submit">Brew Potion</button>
+    </div>
   </div>
 
   <div class="ingredients-list">
-    <% data.ingredients.forEach(ingredient => { %>
-    <%- include('partials/ingredientCard', {ingredient: ingredient}) %>
-    <% }) %>
+    <% data.ingredients.forEach(ingredient => { %> <%-
+    include('partials/ingredientCard', {ingredient: ingredient}) %> <% }) %>
   </div>
 </form>
+
+<script src="scripts/index.js" defer></script>
 <%- include('partials/meta/foot') %>

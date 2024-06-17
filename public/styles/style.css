@@ -3,7 +3,9 @@
 /* ----------------------------------- */
 
 :root {
-
+  --color-focus-ring: rgba(206, 78, 130, 0.4);
+  --color-focus-gradient-inner: rgba(206, 78, 130, 0);
+  --color-focus-gradient-outer: rgba(206, 78, 130, 0.4);
 }
 
 * {
@@ -31,4 +33,8 @@ body {
   position: absolute;
   white-space: nowrap;
   width: 1px;
+}
+
+.display-none {
+  display: none !important;
 }
