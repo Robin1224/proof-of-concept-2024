@@ -1,7 +1,15 @@
 <%- include('partials/meta/head', {page: "index"}) %>
 
 <form method="POST" action="/brew">
-  <div class="book"></div>
+  <div class="book" data-max=<%= data.potions.length %>>
+    <% data.potions.forEach(potion => { %> 
+    <%- include('partials/potionPage', {potion: potion, ingredients: data.ingredients}) %> 
+    <% }) %>
+    <div class="book-navigation">
+      <button disabled><</button>
+      <button>></button>
+    </div>
+  </div>
 
   <div class="cauldron">
     <svg
@@ -24,9 +32,9 @@
     </svg>
     <div class="ingredients-active">
       <div class="active-grid">
-        <% data.ingredients.forEach(ingredient => { %> <%-
-        include('partials/activeIngredientCard', {ingredient: ingredient}) %> <%
-        }) %>
+        <% data.ingredients.forEach(ingredient => { %> 
+        <%- include('partials/activeIngredientCard', {ingredient: ingredient}) %> 
+        <% }) %>
         <div class="empty-slot"></div>
         <div class="empty-slot"></div>
         <div class="empty-slot"></div>
@@ -39,8 +47,9 @@
   </div>
 
   <div class="ingredients-list">
-    <% data.ingredients.forEach(ingredient => { %> <%-
-    include('partials/ingredientCard', {ingredient: ingredient}) %> <% }) %>
+    <% data.ingredients.forEach(ingredient => { %>
+    <%-include('partials/ingredientCard', {ingredient: ingredient}) %> 
+    <% }) %>
   </div>
 </form>
 

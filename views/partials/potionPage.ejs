@@ -1,0 +1,29 @@
+<div class="potion-page <%= (potion.id == 0 ? "" : "display-none") %>" data-id=<%= potion.id %>>
+  <div class="potion-title" style="background-color: <%= potion.color.rgba %>;">
+    <img src=<%= potion.asset %>>
+    <div>
+      <h2><%= potion.name %></h2>
+      <p><%= potion.description %></p>
+    </div>
+  </div>
+  <div class="potion-effects">
+    <h3>Effects</h3>
+    <ul>
+    <% potion.effects.forEach(effect => { %>
+      <li><%= effect %></li>
+    <% }) %>
+    </ul>
+  </div>
+  <div class="potion-recipe">
+    <% potion.ingredients.forEach(ingredientID => { %> 
+    <%- include('recipeIngredientCard', {ingredient: ingredients[ingredientID]}) %> 
+    <% }) %>
+    <div class="empty-slot"></div>
+    <div class="empty-slot"></div>
+    <div class="empty-slot"></div>
+    <div class="empty-slot"></div>
+    <div class="empty-slot"></div>
+    <div class="empty-slot"></div>
+  </div>
+</div>
+

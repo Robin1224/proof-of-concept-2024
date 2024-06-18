@@ -27,16 +27,108 @@ form {
   display: flex;
 }
 
+/* ----------------------------------- */
+/* ----------- Recipe book ----------- */
+/* ----------------------------------- */
+
 .book {
   display: none;
   position: absolute;
   left: 0;
   top: 1rem;
   width: 30rem;
+  padding: 1rem;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
   height: calc(100% - 11rem);
-  background-color: rgba(0, 255, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   z-index: 1;
 }
+
+.book .potion-page {
+  height: calc(100% - 5rem);
+  width: 100%;
+}
+
+.book .potion-title {
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+
+.book .potion-title h2 { 
+  margin-bottom: 0.5rem;
+}
+
+.book img {
+  width: 8rem;
+  height: 8rem;
+}
+
+.book .potion-effects {
+  margin-top: 2rem;
+  margin-left: 3rem;
+}
+
+.book .potion-effects h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+.book .potion-recipe {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+  border-radius: 0.5rem;
+  /* background-color: rgba(255, 255, 255, 0.2); */
+  /* 2size + 3 */
+  height: 13rem;
+  /* 3size + 4 */
+  width: 19rem;
+  overflow: hidden;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.book .potion-recipe .recipe-ingredient {
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.book .potion-recipe .recipe-ingredient img {
+  height: 4rem;
+  width: 4rem;
+}
+
+.book .potion-recipe .empty-slot {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.book .book-navigation {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.book .book-navigation button {
+  width: 5rem;
+  height: 5rem;
+  margin: 0;
+}
+
+/* ----------------------------------- */
+/* ------------ Cauldron ------------- */
+/* ----------------------------------- */
 
 .cauldron {
   position: absolute;
@@ -81,6 +173,7 @@ form {
   -webkit-backdrop-filter: blur(3px);
   background-color: rgba(255, 255, 255, 0.2);
   transition: background-color 0.1s, box-shadow 0.3s;
+  cursor: pointer;
 }
 
 .ingredient:hover {
@@ -170,7 +263,7 @@ button {
   overflow: hidden;
 }
 
-.empty-slot {
+.active-grid .empty-slot {
   height: var(--ingredient-size);
   width: var(--ingredient-size);
   border-radius: 0.5rem;
