@@ -76,7 +76,6 @@ app.get("/result/:id", function (request, response) {
 
 // Maak een GET route voor de failure pagina (onbekende potion)
 app.get("/failed", function (request, response) {
-
       response.render("failed");
 });
 

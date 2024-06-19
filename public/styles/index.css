@@ -7,8 +7,12 @@
   --ingredient-image: 6rem;
   --ingredient-margin: 1rem;
 
-  --color-selected: rgba(78, 206, 187, 0.4);
+  --color-selected-ring: rgba(78, 206, 187, 0.4);
+  --color-selected-gradient-inner: rgba(78, 206, 187, 0);
+  --color-selected-gradient-outer: rgba(78, 206, 187, 0.4);
   
+  
+  --color-disabled-ring: rgba(206, 78, 78, 0.4);
   --color-disabled-gradient-inner: rgba(206, 78, 78, 0);
   --color-disabled-gradient-outer: rgba(206, 78, 78, 0.4);
 }
@@ -45,6 +49,7 @@ form {
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
   z-index: 1;
+  transition: transform 0.2s ease-in-out;
 }
 
 .book .potion-page {
@@ -124,7 +129,30 @@ form {
   width: 5rem;
   height: 5rem;
   margin: 0;
+  cursor: pointer;
 }
+
+.book .close-book {
+  position: absolute;
+  top: 1rem;
+  right: -4rem;
+  cursor: pointer;
+  width: 3rem;
+  height: 4rem;
+  background-color: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  z-index: 1;
+  border-radius: 0;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+  border: none;
+}
+
+.book-closed {
+  transform: translateX(-29rem);
+}
+
 
 /* ----------------------------------- */
 /* ------------ Cauldron ------------- */
@@ -174,23 +202,29 @@ form {
   background-color: rgba(255, 255, 255, 0.2);
   transition: background-color 0.1s, box-shadow 0.3s;
   cursor: pointer;
+  animation: fadeIn 0.2s ease-out;
 }
 
-.ingredient:hover {
+/* .ingredient:hover {
   background-color: rgba(255, 255, 255, 0.3);
-}
+} */
 
-.ingredient:focus-within {
+.ingredient:focus-within, .ingredient:hover{
   outline: none;
   box-shadow: 0 0 0 4px var(--color-focus-ring);
 }
 
 .ingredient:has(input:checked) {
   outline: none;
-  box-shadow: 0 0 0 4px var(--color-selected);
+  box-shadow: 0 0 0 4px var(--color-selected-ring);
 }
 
-.ingredient:focus-within::after {
+.ingredient:has(input:disabled) {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-disabled-ring);
+}
+
+.ingredient:focus-within::after, .ingredient:hover::after{
   content:"";
   height: var(--ingredient-size);
   width: var(--ingredient-size);
@@ -201,6 +235,20 @@ form {
     circle,
     var(--color-focus-gradient-inner) 40%,
     var(--color-focus-gradient-outer) 100%
+  );
+}
+
+.ingredient:has(input:checked)::after{
+  content:"";
+  height: var(--ingredient-size);
+  width: var(--ingredient-size);
+  border-radius: 0.5rem;
+  position: absolute;
+  background: rgb(206, 78, 130);
+  background: radial-gradient(
+    circle,
+    var(--color-selected-gradient-inner) 40%,
+    var(--color-selected-gradient-outer) 100%
   );
 }
 
@@ -217,6 +265,7 @@ form {
     var(--color-disabled-gradient-outer) 100%
   );
 }
+
 
 .ingredient img {
   height: var(--ingredient-image);
@@ -235,11 +284,38 @@ button {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
   background-color: #f0f0f0;
-  position: static;
+  position: relative;
   height: 3rem;
   width: calc(100% - 2rem);
   margin: 0 1rem 0 1rem;
+  cursor: pointer;
+  overflow: hidden;
+  border: none;
+  transition: background-color 0.1s, box-shadow 0.3s;
 } 
+
+button:not(:disabled):focus-visible, button:not(:disabled):hover {
+  box-shadow: 0 0 0 4px var(--color-focus-ring);
+}
+
+button:not(:disabled):focus-visible::after, button:not(:disabled):hover::after {
+  content:"";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgb(206, 78, 130);
+  background: radial-gradient(
+    circle,
+    var(--color-focus-gradient-inner) 40%,
+    var(--color-focus-gradient-outer) 100%
+  );
+}
+
+button:disabled {
+  cursor: default !important;
+}
 
 .ingredients-active {
   position: absolute;
@@ -273,5 +349,16 @@ button {
 @media only screen and (min-width: 880px) {
   .book {
     display: block;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.75);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
