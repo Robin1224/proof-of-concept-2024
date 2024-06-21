@@ -1,7 +1,7 @@
 > _Fork_ deze leertaak en ga aan de slag. Onderstaande outline ga je gedurende deze taak in jouw eigen GitHub omgeving uitwerken. De instructie vind je in: [docs/INSTRUCTIONS.md](docs/INSTRUCTIONS.md)
 
 # Titel
-<!-- Geef je project een titel en schrijf in één zin wat het is -->
+Merlin's Book of Potions - Webgame over het brouwen van potions door ingrediënten te combineren
 
 ## Inhoudsopgave
 
@@ -13,20 +13,36 @@
   * [Licentie](#licentie)
 
 ## Beschrijving
-<!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+Een webgame waarbij je ingredienten kunt samenvoegen om magische potions te brouwen. Heeft een receptenboek aan de linkerkant van het scherm waarin alle potions gevonden kunnen worden. Gebruikt Node, Express en EJS. De potions en ingrediënten komen uit een API van Merlin Studio.
+
+![image](https://github.com/Robin1224/proof-of-concept-2024/assets/81151231/ed161b07-ffcf-4b96-84e9-4150c92adac6)
+
+De website is gehost via Render:
+https://merlins-potions.onrender.com/
 
 ## Gebruik
-<!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
+De gebruiker kan met het receptenboek links van het scherm potions zoeken. Vervolgens kan de gebruiker ingrediënten onder aan het scherm uitkiezen en samenvoegen om deze potions te brouwen.
 
 ## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
+Gebruikte technologieën:
+* Node
+* EJS
+* Directus
+* Cyclic
+
+De server logica staat in `server.js`. Dit rendert een pagina uit de `/views` directory, en deze gebruiken components uit `/view/partials`
 
 ## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+
+1. Clone de repo naar je eigen werkomgeving
+2. Run `npm install` om alle dependencies te installeren
+3. Start een lokale dev server met `npm start`
 
 ## Bronnen
+* MDN
+* StackOverflow
+* Github Copilot Chat (ChatGPT 3.5)
+* EJS docs
 
 ## Licentie
 
