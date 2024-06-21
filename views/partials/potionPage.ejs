@@ -1,6 +1,6 @@
 <div class="potion-page <%= (potion.id == 0 ? "" : "display-none") %>" data-id=<%= potion.id %>>
   <div class="potion-title" style="background-color: <%= potion.color.rgba %>;">
-    <img src=<%= potion.asset %>>
+    <img src=<%= potion.asset %> alt=<%= potion.name %>>
     <div>
       <h2><%= potion.name %></h2>
       <p><%= potion.description %></p>

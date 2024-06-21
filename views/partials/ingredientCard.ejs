@@ -1,5 +1,5 @@
 <label class="ingredient" style="background-color: <%= ingredient.color.rgba %>;">
   <input type="checkbox" name="ingredients" value="<%= ingredient.id %>" id="input<%= ingredient.id %>" class="visually-hidden" data-color="<%= ingredient.color.hex %>"/>
-  <img src="<%= ingredient.asset %>" alt="<%= ingredient.name %>" />
+  <img src="<%= ingredient.asset %>" alt="<%= ingredient.name %>" loading="lazy"/>
   <!-- <%= ingredient.id %> -->
 </label>

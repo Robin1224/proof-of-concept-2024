@@ -214,16 +214,6 @@ form {
   box-shadow: 0 0 0 4px var(--color-focus-ring);
 }
 
-.ingredient:has(input:checked) {
-  outline: none;
-  box-shadow: 0 0 0 4px var(--color-selected-ring);
-}
-
-.ingredient:has(input:disabled) {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--color-disabled-ring);
-}
-
 .ingredient:focus-within::after, .ingredient:hover::after{
   content:"";
   height: var(--ingredient-size);
@@ -236,6 +226,16 @@ form {
     var(--color-focus-gradient-inner) 40%,
     var(--color-focus-gradient-outer) 100%
   );
+}
+
+.ingredient:has(input:checked) {
+  outline: none;
+  box-shadow: 0 0 0 4px var(--color-selected-ring);
+}
+
+.ingredient:has(input:disabled) {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-disabled-ring);
 }
 
 .ingredient:has(input:checked)::after{

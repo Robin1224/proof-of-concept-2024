@@ -48,7 +48,7 @@ app.get("/", function (request, response) {
       response.render("index", { data: finalData });
     })
     .catch(function (error) {
-      // if there's an error in any of the fetches, it will be caught here
+      // Als er een error is met de fetches, dan wordt deze hier opgevangen
       console.error("Error:", error);
     });
 });
@@ -78,7 +78,6 @@ app.get("/result/:id", function (request, response) {
 app.get("/failed", function (request, response) {
       response.render("failed");
 });
-
 
 
 // ---- POST Routes ----
