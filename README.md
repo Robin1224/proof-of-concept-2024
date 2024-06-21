@@ -1,5 +1,3 @@
-> _Fork_ deze leertaak en ga aan de slag. Onderstaande outline ga je gedurende deze taak in jouw eigen GitHub omgeving uitwerken. De instructie vind je in: [docs/INSTRUCTIONS.md](docs/INSTRUCTIONS.md)
-
 # Titel
 Merlin's Book of Potions - Webgame over het brouwen van potions door ingrediënten te combineren
 
